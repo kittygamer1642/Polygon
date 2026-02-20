@@ -1,3 +1,3 @@
 ﻿# Polygon
 
-Simple polygon project.
+Simple platformer game using matter.js.
