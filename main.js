@@ -13,7 +13,7 @@ let height = window.innerHeight;
 let centerX = (width / 2);
 let centerY = (height / 2);
 
-console.log('Polygon v1.2');
+console.log('Polygon v1.0');
 
 console.log(width, height);
 console.log(centerX, centerY);

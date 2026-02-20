@@ -17,6 +17,16 @@ levels = {
         ],
         spawnPoint: {x: centerX, y: centerY + 20},
         levelEnd: {x: centerX + 150, y: height - 300, width: 50, height: 25, color: '#0f0'}
+    },
+    3: {
+        platforms: [
+            {x: centerX, y: height - 25, width: 400, height: 25, color: platformColor},
+        ],
+        lava: [
+            {x: centerX + 100, y: height - 50, width: 100, height: 25, color: '#f00'},
+        ],
+        spawnPoint: {x: centerX, y: centerY - 20},
+        levelEnd: {x: centerX + 400, y: height - 50, width: 200, height: 25, color: '#0f0'}
     }
 }
 
@@ -32,6 +42,18 @@ function loadLevel(level) {
             platforms.push(platform);
             Composite.add(world, platform);
         });
+
+        // hazards
+        if (levels[level].lava) {
+            levels[level].lava.forEach(h => {
+                let hazard = Bodies.rectangle(h.x, h.y, h.width, h.height, {
+                    label: 'hazard',
+                    isStatic: true,
+                    render: { fillStyle: h.color }
+                });
+                Composite.add(world, hazard);
+            });
+        }
 
         spawnPoint = levels[level].spawnPoint;
 
@@ -62,7 +84,7 @@ function lastLevel() {
 }
 
 function nextLevel() {
-    if (currentLevel < highestLevel) {
+    if (currentLevel < highestLevel || debug) {
         Composite.clear(world); // clear world of all bodies
         Composite.add(world, [player]); // add player back to world
         currentLevel++;
@@ -73,6 +95,6 @@ function nextLevel() {
     }
 }
 
-let highestLevel = 1;
-let currentLevel = 1;
+let highestLevel = 1; // track highest level reached for nextLevel function
+let currentLevel = 1; // track current level for UI and level loading
 loadLevel(1); // load first level

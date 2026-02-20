@@ -99,6 +99,10 @@ function onCollision(event) {
             document.getElementById('levelText').innerText = 'Level ' + currentLevel;
             console.log('Loaded level ' + currentLevel);
         }
+        if ((pair.bodyA.label === 'player' && pair.bodyB.label === 'hazard') || (pair.bodyB.label === 'player' && pair.bodyA.label === 'hazard')) {
+            console.log('Player hit hazard!');
+            killPlayer();
+        }
     });
 }
 
