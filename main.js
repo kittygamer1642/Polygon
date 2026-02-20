@@ -36,6 +36,11 @@ Runner.run(runner, engine);
 
 // player
 var player = Bodies.rectangle(centerX, centerY - 20, 25, 25, {label: 'player', color:'#0000ff'});
+// player
+var player = Bodies.rectangle(centerX, centerY - 20, 25, 25, {
+    label: 'player',
+    render: { fillStyle: '#0000ff' }
+});
 let spawnPoint = {x: centerX, y: centerY - 20};
 
 // platforms
