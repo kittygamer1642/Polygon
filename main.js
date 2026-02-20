@@ -13,8 +13,10 @@ let height = window.innerHeight;
 let centerX = (width / 2);
 let centerY = (height / 2);
 
-console.log(centerX);
-console.log(centerY);
+console.log('Polygon v1.2');
+
+console.log(width, height);
+console.log(centerX, centerY);
 
 var render = Render.create({
     canvas: document.getElementById('game'),
@@ -34,19 +36,24 @@ Render.run(render);
 var runner = Runner.create();
 Runner.run(runner, engine);
 
+// platforms
+function createPlatform(x, y, width, height, color, label='platform') {
+    let platform = Bodies.rectangle(x, y, width, height, {
+        label: label,
+        isStatic: true,
+        render: { fillStyle: color }
+    });
+    platforms.push(platform);
+    return platform;
+}
+
 // player
 var player = Bodies.rectangle(centerX, centerY - 20, 25, 25, {
     label: 'player',
     render: { fillStyle: '#0000ff' }
 });
 
-let spawnPoint = {x: centerX, y: centerY - 20};
-
-// platforms
-var platform1 = Bodies.rectangle(centerX, height - 25, 400, 25, {label: 'platform1', isStatic: true, render: { fillStyle: '#666' }});
-var platform2 = Bodies.rectangle(centerX + 400, height - 25, 400, 25, {label: 'platform2', isStatic: true, render: { fillStyle: '#666' }});
-
-Composite.add(world, [player, platform1, platform2]);
+Composite.add(world, [player]); // add player to world
 
 let camX = 0;
 let camY = 0;

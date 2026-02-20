@@ -88,6 +88,13 @@ function onCollision(event) {
             document.getElementById('impactSound').play();
             console.log('Player collided with ' + (pair.bodyA.label === 'player' ? pair.bodyB.label : pair.bodyA.label));
         }
+        if ((pair.bodyA.label === 'player' && pair.bodyB.label === 'levelEnd') || (pair.bodyB.label === 'player' && pair.bodyA.label === 'levelEnd')) {
+            console.log('Level complete!');
+            Composite.clear(world);
+            Composite.add(world, [player]);
+            currentLevel++;
+            loadLevel(currentLevel);
+        }
     });
 }
 
