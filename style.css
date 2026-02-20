@@ -1,3 +1,27 @@
 body {
     font-family: monospace;
+    margin: 0;
+    overflow: hidden;
+}
+
+/* level text overlay */
+#overlay {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    color: #fff;
+    font-size: 24px;
+    z-index: 100;
+    pointer-events: none; /* clicks pass through */
+}
+
+.UIbutton {
+    pointer-events: auto; /* enable clicks on buttons */
+    background: rgba(0, 0, 0, 0.5);
+    border: none;
+    color: #fff;
+    font-size: 18px;
+    padding: 5px 10px;
+    margin: 0 10px;
+    cursor: pointer;
 }

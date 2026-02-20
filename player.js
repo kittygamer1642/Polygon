@@ -57,11 +57,6 @@ function move() {
     let standingOn = Matter.Query.ray(engine.world.bodies, startPoint, endPoint, 24.5);
     standingOn = standingOn.filter(body => body.label !== player.label);
     
-    if (debug) {
-        document.getElementById('collision').innerText = standingOn;
-        document.getElementById('position').innerText = player.position.y;
-    }
-    
     // jump logic
     if (jump) {
         if (standingOn.length > 1) {
@@ -90,10 +85,19 @@ function onCollision(event) {
         }
         if ((pair.bodyA.label === 'player' && pair.bodyB.label === 'levelEnd') || (pair.bodyB.label === 'player' && pair.bodyA.label === 'levelEnd')) {
             console.log('Level complete!');
-            Composite.clear(world);
-            Composite.add(world, [player]);
+            Composite.clear(world); // clear world of all bodies
+            Composite.add(world, [player]); // add player back to world
+
+            // load next level
             currentLevel++;
+            if (currentLevel > highestLevel) {
+                highestLevel = currentLevel;
+            }
             loadLevel(currentLevel);
+            
+            // update level text
+            document.getElementById('levelText').innerText = 'Level ' + currentLevel;
+            console.log('Loaded level ' + currentLevel);
         }
     });
 }

@@ -4,20 +4,19 @@ levels = {
     1: {
         platforms: [
             {x: centerX, y: height - 25, width: 400, height: 25, color: platformColor},
-            {x: centerX + 400, y: height - 50, width: 200, height: 25, color: platformColor},
-            {x: centerX + 250, y: height - 200, width: 100, height: 25, color: platformColor},
-            {x: centerX + 500, y: height - 150, width: 100, height: 25, color: platformColor}
         ],
         spawnPoint: {x: centerX, y: centerY - 20},
-        levelEnd: {x: centerX + 500, y: height - 175, width: 50, height: 25, color: '#0f0'}
+        levelEnd: {x: centerX + 400, y: height - 50, width: 200, height: 25, color: '#0f0'}
     },
     2: {
         platforms: [
             {x: centerX, y: height - 25, width: 400, height: 25, color: platformColor},
             {x: centerX + 400, y: height - 50, width: 200, height: 25, color: platformColor},
+            {x: centerX + 250, y: height - 200, width: 100, height: 25, color: platformColor},
+            {x: centerX + 500, y: height - 130, width: 100, height: 25, color: platformColor}
         ],
-        spawnPoint: {x: centerX, y: centerY - 20},
-        levelEnd: {x: centerX + 400, y: height - 75, width: 50, height: 25, color: '#0f0'}
+        spawnPoint: {x: centerX, y: centerY + 20},
+        levelEnd: {x: centerX + 150, y: height - 300, width: 50, height: 25, color: '#0f0'}
     }
 }
 
@@ -50,5 +49,30 @@ function loadLevel(level) {
     }
 }
 
+function lastLevel() {
+    if (currentLevel > 1) {
+        Composite.clear(world); // clear world of all bodies
+        Composite.add(world, [player]); // add player back to world
+        currentLevel--;
+        loadLevel(currentLevel);
+
+        document.getElementById('levelText').innerText = 'Level ' + currentLevel;
+        console.log('Loaded level ' + currentLevel);
+    }
+}
+
+function nextLevel() {
+    if (currentLevel < highestLevel) {
+        Composite.clear(world); // clear world of all bodies
+        Composite.add(world, [player]); // add player back to world
+        currentLevel++;
+        loadLevel(currentLevel);
+
+        document.getElementById('levelText').innerText = 'Level ' + currentLevel;
+        console.log('Loaded level ' + currentLevel);
+    }
+}
+
+let highestLevel = 1;
 let currentLevel = 1;
 loadLevel(1); // load first level

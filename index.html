@@ -9,10 +9,14 @@
     </head>
     <body>
         <canvas id="game"></canvas>
+        <!-- overlay for UI -->
+        <div id="overlay">
+            <button class="UIbutton" onclick="lastLevel()">←</button>
+            <span id="levelText">Level 1</span>
+            <button class="UIbutton" onclick="nextLevel()">→</button>
+        </div>
         <script src="main.js"></script>
         <script src="level.js"></script>
         <script src="player.js"></script>
-        <h1 id="collision"></h1>
-        <h1 id="position"></h1>
     </body>
 </html>
