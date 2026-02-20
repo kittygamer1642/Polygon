@@ -12,4 +12,4 @@ platform to continue.
 <br>
 Avoid the
 $${\color{#ff0000}\text{red}}$$
-platforms, they will kill you!
+platforms, they will *kill* you!
