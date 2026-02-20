@@ -44,9 +44,9 @@ let spawnPoint = {x: centerX, y: centerY - 20};
 
 // platforms
 var platform1 = Bodies.rectangle(centerX, height - 25, 400, 25, {label: 'platform1', isStatic: true});
-var platform2 = Bodies.rectangle(centerX + 200, height - 150, 400, 25, {label: 'platform2', isStatic: true});
-var platform3 = Bodies.rectangle(centerX - 200, height - 300, 400, 25, {label: 'platform3', isStatic: true});
-var platform4 = Bodies.rectangle(centerX + 200, height - 450, 400, 25, {label: 'platform4', isStatic: true});
+var platform2 = Bodies.rectangle(centerX + 200, height - 25, 400, 25, {label: 'platform2', isStatic: true});
+var platform3 = Bodies.rectangle(centerX - 200, height - 25, 400, 25, {label: 'platform3', isStatic: true});
+var platform4 = Bodies.rectangle(centerX + 200, centerY - 25, 400, 25, {label: 'platform4', isStatic: true});
 var platform5 = Bodies.rectangle(centerX - 200, height - 600, 400, 25, {label: 'platform5', isStatic: true});
 
 Composite.add(world, [player, platform1, platform2, platform3, platform4, platform5]);
