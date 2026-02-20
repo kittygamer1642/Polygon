@@ -43,8 +43,8 @@ var player = Bodies.rectangle(centerX, centerY - 20, 25, 25, {
 let spawnPoint = {x: centerX, y: centerY - 20};
 
 // platforms
-var platform1 = Bodies.rectangle(centerX, height - 25, 400, 25, {label: 'platform1', isStatic: true});
-var platform2 = Bodies.rectangle(centerX + 400, height - 25, 400, 25, {label: 'platform2', isStatic: true});
+var platform1 = Bodies.rectangle(centerX, height - 25, 400, 25, {label: 'platform1', isStatic: true, render: { fillStyle: '#666' }});
+var platform2 = Bodies.rectangle(centerX + 400, height - 25, 400, 25, {label: 'platform2', isStatic: true, render: { fillStyle: '#666' }});
 
 Composite.add(world, [player, platform1, platform2]);
 
