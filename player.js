@@ -1,6 +1,9 @@
 let joyX = 0;
 
-let debug = false;
+let debug = true;
+let paused = false;
+
+document.getElementById('pauseText').innerText = '';
 
 // movement buttons
 let left = false;
@@ -21,14 +24,16 @@ document.addEventListener('keydown', (event) => {
 
     // pause key
     if (event.key === 'p') {
-        if (engine.enabled) {
-            engine.enabled = false;
+        if (!paused) {
+            Matter.Runner.stop(runner);
             document.getElementById('pauseText').innerText = 'Paused';
             console.log('Game paused.');
+            paused = true;
         } else {
-            engine.enabled = true;
+            Matter.Runner.run(runner, engine);
             document.getElementById('pauseText').innerText = '';
             console.log('Game unpaused.');
+            paused = false;
         }
     }
 });
@@ -48,6 +53,14 @@ document.addEventListener('keyup', (event) => {
 function killPlayer() {
     Matter.Body.setPosition(player, spawnPoint);
     Matter.Body.setVelocity(player, {x: 0, y: 0});
+
+    Composite.clear(world); // clear world of all bodies
+    Composite.add(world, [player]); // add player back to world
+
+    loadLevel(currentLevel);
+    if (currentLevel === 'end') {
+        document.getElementById('levelText').innerText = 'The End';
+    }
 }
 
 // move player outside event listeners for smoother movement
@@ -103,15 +116,7 @@ function onCollision(event) {
             Composite.add(world, [player]); // add player back to world
 
             // load next level
-            currentLevel++;
-            if (currentLevel > highestLevel) {
-                highestLevel = currentLevel;
-            }
-            loadLevel(currentLevel);
-            
-            // update level text
-            document.getElementById('levelText').innerText = 'Level ' + currentLevel;
-            console.log('Loaded level ' + currentLevel);
+            nextLevel();
         }
         if ((pair.bodyA.label === 'player' && pair.bodyB.label === 'hazard') || (pair.bodyB.label === 'player' && pair.bodyA.label === 'hazard')) {
             console.log('Player hit hazard!');

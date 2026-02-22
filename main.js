@@ -70,9 +70,16 @@ function scroll() {
 }
 
 addEventListener('resize', function(event) {
-    render.canvas.width = window.innerWidth;
-    render.canvas.height = window.innerHeight;
-    render.options.width = window.innerWidth;
+    width = window.innerWidth;
+    height = window.innerHeight;
+    centerX = (width / 2);
+    centerY = (height / 2);
+
+    render.canvas.width = width;
+    render.canvas.height = height;
+
+    Render.run(render);
+
 });
 
 setInterval(scroll, 1); // move camera to follow player
