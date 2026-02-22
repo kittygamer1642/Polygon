@@ -1,18 +1,20 @@
 body {
+    background: #14151f;
     font-family: monospace;
     margin: 0;
     overflow: hidden;
 }
 
-/* level text overlay */
-#overlay {
-    position: absolute;
-    top: 20px;
-    left: 20px;
+h1 {
+    font-size: 44px;
+    margin: 20px;
     color: #fff;
-    font-size: 24px;
-    z-index: 100;
-    pointer-events: none; /* clicks pass through */
+}
+
+a {
+    font-family: monospace;
+    color: #fff;
+    text-decoration: none;
 }
 
 .UIbutton {
@@ -24,4 +26,56 @@ body {
     padding: 5px 10px;
     margin: 0 10px;
     cursor: pointer;
+}
+
+@keyframes titleAnim {
+    0% { opacity: 0; transform: scale(0.5, 0.5); }
+    100% { opacity: 1; transform: scale(1, 1); }
+}
+
+#title {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    color: #0000ff;
+    font-size: 80px;
+    z-index: 100;
+    margin-left: 0px;
+    
+    /* title animation */
+    animation: titleAnim 2s ease-out;
+}
+
+@keyframes buttonAnim {
+    0% { opacity: 0; transform: translateY(0px); }
+    50% { opacity: 1; transform: translateY(40px); }
+    100% { opacity: 1; transform: translateY(0px); }
+}
+
+#startButton {
+    position: absolute;
+    top: 60px;
+    left: 20px;
+    background: rgba(0, 0, 0, 0.5);
+    border: none;
+    color: #fff;
+    font-size: 18px;
+    padding: 5px 10px;
+    cursor: pointer;
+    z-index: 100;
+    margin-left: 0px;
+
+    /* button animation */
+    animation: buttonAnim 2s ease-out;
+}
+
+/* level text overlay */
+#overlay {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    color: #fff;
+    font-size: 24px;
+    z-index: 100;
+    pointer-events: none; /* clicks pass through */
 }

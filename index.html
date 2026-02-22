@@ -3,24 +3,11 @@
     <head>
         <title>Polygon</title>
         <link rel="stylesheet" href="style.css">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.17.1/matter.min.js"></script>
-        <audio id="jumpSound" src="jump.wav"></audio>
-        <audio id="impactSound" src="impact.wav"></audio>
     </head>
     <body>
-        <canvas id="game"></canvas>
-        <!-- overlay for UI -->
-        <div id="overlay">
-            <button class="UIbutton" onclick="lastLevel()">←</button>
-            <span id="levelText">Level 1</span>
-            <button class="UIbutton" onclick="nextLevel()">→</button>
-            
-            <button class="UIbutton" style="width: 50px;" onclick="killPlayer()">↻</button>
-            <br><br>
-            <span id="pauseText">Paused</span>
-        </div>
-        <script src="main.js"></script>
-        <script src="level.js"></script>
-        <script src="player.js"></script>
+        <h1 id="title">Polygon</h1>
+        <button class="UIbutton" id="startButton"><a href="game.html">Start Game</a></button>
+
+        <script src="title.js"></script>
     </body>
 </html>

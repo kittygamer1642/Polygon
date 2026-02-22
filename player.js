@@ -72,7 +72,10 @@ function move() {
     
     // apply force to player for horizontal movement
     Matter.Body.setVelocity(player, {x: joyX, y: player.velocity.y});
+
+    // prevent player from rotating
     Matter.Body.setAngularVelocity(player, 0);
+    Matter.Body.setAngle(player, 0);
     
     // downward raycast for ground detection
     let startPoint = player.position;
