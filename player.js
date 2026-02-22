@@ -8,6 +8,7 @@ let right = false;
 let jump = false;
 
 document.addEventListener('keydown', (event) => {
+    // movement keys
     if (event.key === 'a') {
         left = true;
     }
@@ -16,6 +17,19 @@ document.addEventListener('keydown', (event) => {
     }
     if (event.key === 'w') {
         jump = true;
+    }
+
+    // pause key
+    if (event.key === 'p') {
+        if (engine.enabled) {
+            engine.enabled = false;
+            document.getElementById('pauseText').style.display = 'block';
+            console.log('Game paused.');
+        } else {
+            engine.enabled = true;
+            document.getElementById('pauseText').style.display = 'none';
+            console.log('Game unpaused.');
+        }
     }
 });
 
