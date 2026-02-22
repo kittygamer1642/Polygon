@@ -69,4 +69,10 @@ function scroll() {
     Matter.Bounds.shift(render.bounds, { x: camX, y: camY });
 }
 
+addEventListener('resize', function(event) {
+    render.canvas.width = window.innerWidth;
+    render.canvas.height = window.innerHeight;
+    render.options.width = window.innerWidth;
+});
+
 setInterval(scroll, 1); // move camera to follow player
