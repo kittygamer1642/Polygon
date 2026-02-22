@@ -1,7 +1,7 @@
 body {
     background: #14151f;
     font-family: monospace;
-    margin: 0;
+    margin: 0px;
     overflow: hidden;
 }
 
@@ -67,6 +67,23 @@ a {
 
     /* button animation */
     animation: buttonAnim 2s ease-out;
+}
+
+#instructionsButton {
+    position: absolute;
+    top: 100px;
+    left: 20px;
+    background: rgba(0, 0, 0, 0.5);
+    border: none;
+    color: #fff;
+    font-size: 18px;
+    padding: 5px 10px;
+    cursor: pointer;
+    z-index: 100;
+    margin-left: 0px;
+
+    /* button animation with delay */
+    animation: buttonAnim 2.5s ease-out;
 }
 
 /* level text overlay */

@@ -9,6 +9,10 @@ function centerElements() {
     startButton = document.getElementById('startButton');
     startButton.style.left = (centerX - startButton.offsetWidth / 2) + 'px';
     startButton.style.top = (centerY + 80) + 'px';
+
+    instructionsButton = document.getElementById('instructionsButton');
+    instructionsButton.style.left = (centerX - instructionsButton.offsetWidth / 2) + 'px';
+    instructionsButton.style.top = (centerY + 130) + 'px';
 }
 
 centerElements();
