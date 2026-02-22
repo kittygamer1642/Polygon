@@ -23,11 +23,11 @@ document.addEventListener('keydown', (event) => {
     if (event.key === 'p') {
         if (engine.enabled) {
             engine.enabled = false;
-            document.getElementById('pauseText').style.display = 'block';
+            document.getElementById('pauseText').innerText = 'Paused';
             console.log('Game paused.');
         } else {
             engine.enabled = true;
-            document.getElementById('pauseText').style.display = 'none';
+            document.getElementById('pauseText').innerText = '';
             console.log('Game unpaused.');
         }
     }
